@@ -1,1 +1,39 @@
 /* You can add global styles to this file, and also import other style files */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Rubik', sans-serif;
+}
+
+.container {
+    width: 85%;
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+.flex {
+    display: flex;
+}
+
+.f-jcsb {
+    justify-content: space-between;
+}
+
+.f-wrap {
+    flex-wrap: wrap;
+}
+
+.title {
+    margin-bottom: 20px;
+    display: block;
+    color: #050815;
+}
+
+.c-blue {
+    color: #18AEE9;
+}
+
+section {
+    padding: 20px 0;
+}

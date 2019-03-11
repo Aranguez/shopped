@@ -1,0 +1,10 @@
+:host{
+    width: 48%;
+}
+
+.product {
+    padding: 20px;
+    min-height: 150px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+}
