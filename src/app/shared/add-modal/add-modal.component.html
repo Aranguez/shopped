@@ -1,0 +1,8 @@
+<div class="modal" *ngIf="show">
+  <form [formGroup]="form" (ngSubmit)="add(form)">
+    <input type="text" placeholder="name" formControlName="name">
+    <input type="text" placeholder="price" formControlName="price">
+    <button [disabled]="form.invalid">Add</button>
+    <button type="button" (click)="hideModal()">Cancel</button>
+  </form>
+</div>

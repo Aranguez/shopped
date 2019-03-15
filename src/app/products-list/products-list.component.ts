@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../services/product.service';
+import { Product } from '../models';
 
 @Component({
   selector: 'app-products-list',
@@ -8,30 +9,19 @@ import { ProductService } from '../services/product.service';
 })
 export class ProductsListComponent implements OnInit {
 
-  products = [
-    {
-      name: 'product1',
-      price: 800
-    },
-    {
-      name: 'product1',
-      price: 800
-    },
-    {
-      name: 'product1',
-      price: 800
-    },
-    {
-      name: 'product1',
-      price: 800
-    },
-  ]
+  products:Product[] = []
 
   constructor(private db:ProductService) {
-    this.db.getData()
+    this.db.getProducts().subscribe(data => {
+      this.products = data;
+    })
   }
 
   ngOnInit() {
+  }
+
+  trackByFn(index:number, item:Product){
+    return item.id;
   }
 
 }

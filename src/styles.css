@@ -30,6 +30,28 @@
     color: #050815;
 }
 
+.btn {
+    border: none;
+    color: #fff;
+    font-style: italic;
+    font-weight: 700;
+    letter-spacing: 0px;
+    padding: 8px 16px;
+    border-radius: 3px;
+    cursor: pointer;
+    margin: 0 8px;
+}
+.btn:disabled{
+    opacity: .5;
+    cursor: not-allowed;
+}
+.btn-blue{
+    background-color: #18AEE9;
+}
+.btn-gray{
+    background-color: gray;
+}
+
 .c-blue {
     color: #18AEE9;
 }

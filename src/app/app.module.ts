@@ -14,6 +14,10 @@ import { AngularFireModule } from '@angular/fire';
 import { environment } from '../environments/environment';
 import { ProductService } from './services/product.service';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { ProductModalComponent } from './shared/product-modal/product-modal.component';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { AddModalComponent } from './shared/add-modal/add-modal.component';
+import { AngularFireAuthModule } from '@angular/fire/auth';
 
 @NgModule({
   declarations: [
@@ -23,12 +27,17 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
     ProfileComponent,
     NavbarComponent,
     ProductComponent,
-    ProductsListComponent
+    ProductsListComponent,
+    ProductModalComponent,
+    AddModalComponent
   ],
   imports: [
     BrowserModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    AngularFireAuthModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [
     ProductService

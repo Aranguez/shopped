@@ -1,5 +1,7 @@
 export class Product {
+    id:string;
     name:string;
-    image:string;
+    image?:string;
     price:number;
+    isBought:boolean;
 }

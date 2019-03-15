@@ -1,0 +1,14 @@
+
+<div class="modal" *ngIf="show">
+  <form [formGroup]="form">
+    <label>Name</label>
+    <input type="text" formControlName="name" [class.error]="form.get('name').invalid">
+    <label>Price</label>
+    <input type="text" formControlName="price" [class.error]="form.get('price').invalid">
+    <button [disabled]="form.invalid" class="btn btn-blue" (click)="edit()">{{ modalName }}</button>
+    <button type="button" class="btn btn-gray" (click)="hideModal()">Cancel</button>
+  </form>
+  <div class="shadow"></div>
+  <div class="back-modal" (click)="hideModal()"></div>
+</div>
+

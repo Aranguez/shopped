@@ -1,4 +1,7 @@
-<div class="product">
+<div class="product" [class.bought]="product.isBought" *ngIf="product">
   <h4>{{product.name}}</h4>
-  <p>{{product.price}}</p>
+  <p>${{product.price}}</p>
+  <button *ngIf="!product.isBought" (click)="buy(product.id, product.price)">buy</button>
+  <button (click)="edit(product)">edit</button>
+  <button (click)="delete(product.id)">remove</button>
 </div>
