@@ -1,8 +1,8 @@
 <app-navbar></app-navbar>
 <button (click)="showAddModal()">Add Product</button>
-<button (click)="onLogin('facebook')">Facebook Login</button>
-<button (click)="onLogout()">Logout</button>
-<app-profile></app-profile>
+<button (click)="auth.login('facebook')">Facebook Login</button>
+<button (click)="auth.logout()">Logout</button>
+<app-profile [user]="userService.user"></app-profile>
 <app-products-list></app-products-list>
 <app-product-modal></app-product-modal>
 <app-add-modal></app-add-modal>

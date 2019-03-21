@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 
 import { AngularFireAuth } from '@angular/fire/auth';
-import * as firebase from 'firebase/app';
-import { User } from '../models';
 import { AngularFirestore } from '@angular/fire/firestore';
+import * as firebase from 'firebase/app';
+
+import { User } from '../models';
 
 @Injectable({
   providedIn: 'root'
@@ -14,15 +15,17 @@ export class AuthService {
     private auth:AngularFireAuth,
     private db:AngularFirestore) { }
 
+  getUser(){
+    //tomo al usuario
+  }
+
   addUser(user:User){
     this.db.collection('users').add(user);
   }
 
   logout(){
-    this.auth.authState.subscribe(state => {
-      state.delete().then(() => {
-        this.auth.auth.signOut();
-      })
+    this.auth.authState.subscribe(() => {
+      this.auth.auth.signOut(); //TODO: cambiar nombre de servicio
     })
   }
 
@@ -42,16 +45,8 @@ export class AuthService {
       if (!user) {
         firebase.auth().signInWithRedirect(authProvider).then(result =>  {
           console.log(result)
-          // const newUser:User = {
-          //   name: result.
-          // }
-
-          //this.addUser(user)
-        }).catch(function(error) {
-          // Handle Errors here.
-          const errorCode = error.code;
-          const errorMessage = error.message;
-          console.error(errorMessage);
+        }).catch(error => {
+          console.error(error);
         });
       }
     })

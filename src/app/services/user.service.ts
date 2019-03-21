@@ -10,7 +10,7 @@ export class UserService {
 
   user:User = {
     name: 'Leandro',
-    budget: 54000
+    budget: 7000
   };
 
   constructor() {}

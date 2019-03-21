@@ -1,8 +1,13 @@
 <section class="container">
   <h3 class="title">Products List</h3>
   <div class="flex f-jcsb f-wrap">
-    <div *ngFor="let product of products; trackBy:trackByFn" class="product">
-      <app-product [product]="product"></app-product>
+    <div *ngFor="let product of productsList; trackBy:trackByFn" class="product">
+      <app-product
+        [product]="product"
+        (outBuy)="buy($event)"
+        (outEdit)="showEditModal($event)"
+        (outDelete)="delete($event)"
+        ></app-product>
     </div>
   </div>
 </section>

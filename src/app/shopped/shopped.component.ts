@@ -4,6 +4,8 @@ import { AppService } from '../services/app.service';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AuthService } from '../services/auth.service';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { Subscription } from 'rxjs';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-shopped',
@@ -12,12 +14,17 @@ import { AngularFirestore } from '@angular/fire/firestore';
 })
 export class ShoppedComponent implements OnInit {
 
+  authSubscription:Subscription;
+
   constructor (
-    private app:AppService,
+    private db:AngularFirestore,
     private afAuth:AngularFireAuth,
-    private authService:AuthService,
-    private db:AngularFirestore) {
-    this.afAuth.authState.subscribe(user => {
+    private app:AppService,
+    public auth:AuthService,
+    public userService:UserService,
+    ) {
+
+    this.authSubscription = this.afAuth.authState.subscribe(user => {
       if(user){
         this.db.collection('users').get()
       }
@@ -26,16 +33,13 @@ export class ShoppedComponent implements OnInit {
 
   ngOnInit() {}
 
-  onLogin(provider:string){
-    return this.authService.login(provider);
-  }
-
-  onLogout(){
-    return this.authService.logout();
-  }
-  
   showAddModal(){
     this.app.showAddModal();
   }
+
+  ngOnDestroy(): void {
+    this.authSubscription.unsubscribe();
+  }
+  
 
 }

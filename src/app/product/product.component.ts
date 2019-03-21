@@ -1,8 +1,5 @@
-import { Component, Input } from '@angular/core';
-import { ProductService } from '../services/product.service';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Product } from '../models';
-import { AppService } from '../services/app.service';
-import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-product',
@@ -13,22 +10,9 @@ export class ProductComponent {
 
   @Input('product') product:Product = null;
 
-  constructor(
-    private products:ProductService,
-    private app:AppService,
-    private userService:UserService
-  ) { }
+  @Output() outBuy = new EventEmitter();
+  @Output() outEdit = new EventEmitter();
+  @Output() outDelete = new EventEmitter();
 
-  buy(productId:number, amount:number){
-    this.userService.buy(amount);
-    this.products.buy(productId);
-  }
-
-  edit(product:Product){
-    this.app.showEditModal(product);
-  }
-
-  delete(id:string){
-    this.products.remove(id);
-  }
+  constructor() { }
 }
